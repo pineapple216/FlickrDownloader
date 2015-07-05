@@ -7,6 +7,7 @@
 //
 
 #import "PlacesTableViewController.h"
+#import "FlickrDownloader.h"
 
 @interface PlacesTableViewController ()
 
@@ -22,6 +23,21 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    // Download the top places data from Flickr and put it into the placesDict
+    [FlickrDownloader fetchFlickrDataFromURL:[FlickrFetcher URLforTopPlaces] withCompletionHandler:^(NSData *data, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error downloading data from Flickr: %@", [error localizedDescription]);
+        }
+        else{
+            self.placesDict = [[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] valueForKeyPath:FLICKR_RESULTS_PLACES];
+            NSLog(@"places data: %@", self.placesDict);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

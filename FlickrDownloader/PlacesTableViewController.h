@@ -10,4 +10,6 @@
 
 @interface PlacesTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSDictionary *placesDict;
+
 @end
