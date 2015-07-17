@@ -10,6 +10,11 @@
 
 @interface PlacesTableViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSDictionary *placesDict;
+@property (strong, nonatomic) NSArray *sectionHeadersArray;
+
+
+-(NSDictionary *)createPlacesDictFromFlickrResults:(NSDictionary *)flickrResults;
 
 @end

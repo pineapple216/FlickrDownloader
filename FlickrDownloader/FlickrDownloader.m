@@ -10,7 +10,7 @@
 
 @implementation FlickrDownloader
 
-+(void)fetchFlickrDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler{
++(void)fetchFlickrDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSDictionary *resultsDict, NSError *error))completionHandler{
     
     NSURLSessionConfiguration *sessionConf = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConf];
@@ -20,11 +20,13 @@
         if (error != nil) {
             NSLog(@"Error downloading JSON: %@", [error localizedDescription]);
         }
-        
-        // Call the completion handler on the main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completionHandler(data, error);
-        });
+        else{
+            NSDictionary *resultsDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            // Call the completion handler on the main thread
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(resultsDict, error);
+            });
+        }
     }];
     [task resume];
 }

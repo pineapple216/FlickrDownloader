@@ -10,6 +10,6 @@
 
 @interface FlickrDownloader : FlickrFetcher
 
-+(void)fetchFlickrDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler;
++(void)fetchFlickrDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSDictionary *resultsDict, NSError *error))completionHandler;
 
 @end
