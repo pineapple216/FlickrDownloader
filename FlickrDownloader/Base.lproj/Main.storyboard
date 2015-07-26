@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x4Q-lS-Aff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x4Q-lS-Aff">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -42,7 +42,7 @@
                     <navigationItem key="navigationItem" id="CKx-B0-asW"/>
                     <connections>
                         <outlet property="tableView" destination="SkN-0L-aCR" id="UVb-1A-p3v"/>
-                        <segue destination="8mG-AT-qlk" kind="presentation" id="hf3-9y-MSC"/>
+                        <segue destination="8mG-AT-qlk" kind="show" identifier="placesToPhotoListSegue" id="hf3-9y-MSC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjW-0w-QC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,10 +58,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" id="X7b-y1-Oi0">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" textLabel="eat-2c-Rg9" detailTextLabel="ZW8-XC-tc9" style="IBUITableViewCellStyleSubtitle" id="X7b-y1-Oi0">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X7b-y1-Oi0" id="KBj-uA-p1Q">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eat-2c-Rg9">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZW8-XC-tc9">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -70,15 +84,19 @@
                             <outlet property="delegate" destination="8mG-AT-qlk" id="Bd1-zX-Irx"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="gOF-zS-IeL" id="pgT-9U-Zub"/>
+                        <segue destination="KTq-XJ-dC0" kind="show" identifier="TopPhotosToViewerSegue" id="qZk-rb-78t"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgW-3o-QTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3705" y="588"/>
+            <point key="canvasLocation" x="3697" y="588"/>
         </scene>
-        <!--View Controller-->
+        <!--Photo View Controller-->
         <scene sceneID="EvK-ge-wmB">
             <objects>
-                <viewController id="KTq-XJ-dC0" sceneMemberID="viewController">
+                <viewController id="KTq-XJ-dC0" customClass="PhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="avL-ww-qwH"/>
                         <viewControllerLayoutGuide type="bottom" id="4Sr-Qo-1eR"/>
@@ -87,16 +105,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Hk-6Q-5gn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Hk-6Q-5gn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lI0-aU-hhY">
+                                        <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="KTq-XJ-dC0" id="Nv7-YB-6RM"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="lI0-aU-hhY" id="QsP-BB-kUz"/>
+                        <outlet property="scrollView" destination="0Hk-6Q-5gn" id="F82-0n-GV1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5D-bT-9e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3705" y="1274"/>
+            <point key="canvasLocation" x="3697" y="1386"/>
         </scene>
         <!--Recently Viewed Table View Controller-->
         <scene sceneID="VHr-7t-hWe">
@@ -121,7 +151,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Imc-ma-Vr4"/>
                     <connections>
-                        <segue destination="KTq-XJ-dC0" kind="presentation" id="JnU-pj-CvU"/>
+                        <segue destination="KTq-XJ-dC0" kind="show" identifier="recentlyViewedToViewerSegue" id="JnU-pj-CvU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gin-pb-May" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,4 +216,7 @@
             <point key="canvasLocation" x="2144" y="1274"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="JnU-pj-CvU"/>
+    </inferredMetricsTieBreakers>
 </document>

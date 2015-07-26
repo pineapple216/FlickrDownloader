@@ -53,7 +53,7 @@
 		5D4035381B39D8520094A6D7 /* RecentlyViewedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlyViewedTableViewController.h; sourceTree = "<group>"; };
 		5D4035391B39D8520094A6D7 /* RecentlyViewedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlyViewedTableViewController.m; sourceTree = "<group>"; };
 		5D40353B1B39D9450094A6D7 /* TopPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPhotosTableViewController.h; sourceTree = "<group>"; };
-		5D40353C1B39D9450094A6D7 /* TopPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPhotosTableViewController.m; sourceTree = "<group>"; };
+		5D40353C1B39D9450094A6D7 /* TopPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TopPhotosTableViewController.m; sourceTree = "<group>"; usesTabs = 0; };
 		5D40353E1B39DA630094A6D7 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		5D40353F1B39DA630094A6D7 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		5D7D27111B493E83005E8322 /* FlickrDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrDownloader.h; sourceTree = "<group>"; };

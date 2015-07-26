@@ -9,6 +9,7 @@
 #import "PlacesTableViewController.h"
 #import "FlickrDownloader.h"
 #import "FlickrFetcher.h"
+#import "TopPhotosTableViewController.h"
 
 @interface PlacesTableViewController ()
 
@@ -88,8 +89,6 @@
     NSArray *placesInSectionArray = [self.placesDict objectForKey:[self.sectionHeadersArray objectAtIndex:indexPath.section]];
     //NSLog(@"COUNTRY: %@", [self.sectionHeadersArray objectAtIndex:indexPath.section]);
     
-    NSDictionary *placeForIndexPath = [placesInSectionArray objectAtIndex:indexPath.row];
-    NSLog(@"Place for Index: %@", placeForIndexPath);
     
     NSString *placeName = [[[placesInSectionArray[indexPath.row] valueForKeyPath:FLICKR_PLACE_NAME] componentsSeparatedByString:@","] firstObject];
     
@@ -141,15 +140,31 @@
 }
 */
 
-/*
+#pragma mark - Table view Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"placesToPhotoListSegue" sender:indexPath];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"placesToPhotoListSegue"]) {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        //NSLog(@"IndexPath: %@", sender);
+        
+        NSArray *placesInSectionArray = [self.placesDict objectForKey:[self.sectionHeadersArray objectAtIndex:indexPath.section]];
+        NSDictionary *placeForIndexPath = [placesInSectionArray objectAtIndex:indexPath.row];
+        //NSLog(@"Place for selected Cell: %@", placeForIndexPath);
+        
+        TopPhotosTableViewController *photosVC = [segue destinationViewController];
+        photosVC.selectedPlace = placeForIndexPath;
+    }
 }
-*/
+
 
 #pragma mark - Helper Methods
 

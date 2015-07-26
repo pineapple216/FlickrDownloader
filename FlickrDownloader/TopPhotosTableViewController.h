@@ -10,4 +10,9 @@
 
 @interface TopPhotosTableViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSDictionary *selectedPlace;
+@property (strong, nonatomic) NSMutableArray *photosForSelectedPlace;
+
 @end
