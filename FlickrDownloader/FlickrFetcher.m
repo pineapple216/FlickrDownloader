@@ -78,6 +78,9 @@
 #define FLICKR_PLACE_COUNTRY_PLACE_ID @"place.country.place_id"
 #define FLICKR_PLACE_REGION @"place.region"
 
+#define RECENT_PHOTOS @"Recent_Photos"
+#define RECENT_PHOTOS_MAX_NUMBER 20
+
 + (NSString *)extractNameOfPlace:(id)placeId fromPlaceInformation:(NSDictionary *)place
 {
     NSString *name = nil;
@@ -100,6 +103,35 @@
 + (NSString *)extractRegionNameFromPlaceInformation:(NSDictionary *)place
 {
     return [place valueForKeyPath:FLICKR_PLACE_REGION_NAME];
+}
+
+// Method to get the photo ID from a photo dictionary
++ (NSString *)IDForPhoto:(NSDictionary *)photo{
+    return [photo valueForKeyPath:FLICKR_PHOTO_ID];
+}
+
+// Method to get all photo's from NSUserDefaults.
++ (NSArray *)allPhotos{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:RECENT_PHOTOS];
+}
+
+// Check if the photo has already been stored before and if so,
+// remove it and store it again on the top of the list.
++ (void)addPhoto:(NSDictionary *)photo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *photos = [[defaults objectForKey:RECENT_PHOTOS] mutableCopy];
+    if (!photos) photos = [NSMutableArray array];
+    NSUInteger key = [photos indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return [[FlickrFetcher IDForPhoto:photo] isEqualToString:[FlickrFetcher IDForPhoto:obj]];
+    }];
+    if (key != NSNotFound) [photos removeObjectAtIndex:key];
+    [photos insertObject:photo atIndex:0];
+    while ([photos count] > RECENT_PHOTOS_MAX_NUMBER) {
+        [photos removeLastObject];
+    }
+    [defaults setObject:photos forKey:RECENT_PHOTOS];
+    [defaults synchronize];
 }
 
 @end

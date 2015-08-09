@@ -10,6 +10,7 @@
 #import "FlickrFetcher.h"
 #import "FlickrDownloader.h"
 #import "PhotoViewController.h"
+#import "RecentlyViewedTableViewController.h"
 
 @interface TopPhotosTableViewController ()
 
@@ -96,7 +97,7 @@
         cell.detailTextLabel.text = photoDescription;
     }
     
-    NSLog(@"Selected Photo: %@", self.photosForSelectedPlace[indexPath.row]);
+    //NSLog(@"Selected Photo: %@", self.photosForSelectedPlace[indexPath.row]);
     
     return cell;
 }
@@ -139,7 +140,19 @@
 #pragma mark - Table View Delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"TopPhotosToViewerSegue" sender:indexPath];
+    
+    id detail = self.splitViewController.viewControllers[1];
+    if ([detail isKindOfClass:[UINavigationController class]]) {
+        detail = [((UINavigationController *)detail).viewControllers firstObject];
+    }
+    
+    // Check the device type we're running on
+    NSString *deviceType = [UIDevice currentDevice].model;
+    //NSLog(@"Device: %@", deviceType);
+    if ([deviceType isEqualToString:@"iPhone"] || [deviceType isEqualToString:@"iPhone Simulator"]) {
+        [self performSegueWithIdentifier:@"TopPhotosToViewerSegue" sender:indexPath];
+    }
+    [self preparePhotoVC:detail forPhoto:self.photosForSelectedPlace[indexPath.row]];
 }
 
 #pragma mark - Navigation
@@ -153,7 +166,6 @@
     if ([segue.identifier isEqualToString:@"TopPhotosToViewerSegue"]) {
         [self preparePhotoVC:segue.destinationViewController forPhoto:self.photosForSelectedPlace[indexPath.row]];
     }
-    
 }
 
 // Helper Method to pass the photo to the photoVC
@@ -163,6 +175,9 @@
 {
     photoVC.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
     photoVC.title = [NSString stringWithFormat:@"%@", [photo valueForKeyPath:FLICKR_PHOTO_TITLE]];
+    
+    // Add the photo to NSUserDefaults by calling the addPhoto method
+    [FlickrFetcher addPhoto:photo];    
 }
 
 

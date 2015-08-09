@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x4Q-lS-Aff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x4Q-lS-Aff">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -47,7 +47,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjW-0w-QC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="588"/>
+            <point key="canvasLocation" x="2578" y="292"/>
         </scene>
         <!--Top Photos Table View Controller-->
         <scene sceneID="hrr-QG-zUb">
@@ -91,7 +91,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgW-3o-QTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3697" y="588"/>
+            <point key="canvasLocation" x="3319" y="292"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="EvK-ge-wmB">
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5D-bT-9e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3697" y="1386"/>
+            <point key="canvasLocation" x="3319" y="1090"/>
         </scene>
         <!--Recently Viewed Table View Controller-->
         <scene sceneID="VHr-7t-hWe">
@@ -137,10 +137,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uTN-iC-app">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recentlyViewedCell" textLabel="3u8-43-uou" detailTextLabel="AmM-Xc-nQ7" style="IBUITableViewCellStyleSubtitle" id="uTN-iC-app">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uTN-iC-app" id="u9q-Ga-RYF">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3u8-43-uou">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AmM-Xc-nQ7">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -156,7 +170,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gin-pb-May" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="1274"/>
+            <point key="canvasLocation" x="2578" y="978"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zJy-s7-mw7">
@@ -175,13 +189,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPJ-44-YIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1332" y="931"/>
+            <point key="canvasLocation" x="954" y="635"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="ge5-9x-ilx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sev-ya-hRH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hHv-vX-UQ0"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="hHv-vX-UQ0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LVk-Hz-C4h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -194,13 +208,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNX-za-2LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144" y="588"/>
+            <point key="canvasLocation" x="1766" y="292"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="fMc-yU-hjd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OJ1-M7-y3U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nn2-hH-8J1"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="nn2-hH-8J1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3oy-fj-ITq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -213,7 +227,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Aa-QC-83H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144" y="1274"/>
+            <point key="canvasLocation" x="1766" y="978"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
